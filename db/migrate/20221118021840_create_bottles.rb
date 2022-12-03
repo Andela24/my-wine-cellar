@@ -5,8 +5,8 @@ class CreateBottles < ActiveRecord::Migration[6.1]
       t.string :wine_type
       t.string :grape_variety
       t.integer :vintage
-      t.integer :user_id
-      t.integer :winery_id
+      t.references :user, null: false, foreign_key: true, index: true
+      t.references :winery, null: false, foreign_key: true, index: true
 
       t.timestamps
     end
