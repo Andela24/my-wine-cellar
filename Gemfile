@@ -48,3 +48,4 @@ end
 
 gem 'bcrypt-ruby'
 gem "active_model_serializers", "~> 0.10.13"
+gem 'rack-cors'

@@ -16,10 +16,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_030030) do
     t.string "wine_type"
     t.string "grape_variety"
     t.integer "vintage"
-    t.integer "user_id"
-    t.integer "winery_id"
+    t.integer "user_id", null: false
+    t.integer "winery_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bottles_on_user_id"
+    t.index ["winery_id"], name: "index_bottles_on_winery_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_030030) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bottles", "users"
+  add_foreign_key "bottles", "wineries"
 end

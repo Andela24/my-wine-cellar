@@ -42,5 +42,11 @@ module MyWineCellar
  
      # Use SameSite=Strict for all cookies to help protect against CSRF
      config.action_dispatch.cookies_same_site_protection = :strict
+     config.middleware.insert_before 0, Rack::Cors do
+      allow do
+         origins '*'
+         resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete]
+       end
+    end
   end
 end
