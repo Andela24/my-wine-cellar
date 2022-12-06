@@ -9,7 +9,7 @@ module Api
       end
 
       def create
-        Bottle.create(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage])
+        Bottle.create(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage], user_id: User.last.id, winery_id: params[:winery_id])
       end
 
       def update
