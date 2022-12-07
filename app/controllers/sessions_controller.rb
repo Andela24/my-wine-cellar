@@ -1,12 +1,11 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create, :destroy]
+  skip_before_action :authenticate_user, only: [:create]
 
   def create
     user = User.find_by(username: params[:username])
   
     if user&.authenticate(params[:password])
-      session[:init] = true
-      session[:user_id] = user.id
+      user.update(is_logedin: true)
       render json: user, status: :created
     else
       render json: { errors: ["Username or Password did not match."] }
@@ -14,7 +13,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    user = User.find(params[:id])
+    user.update(is_logedin: false)
     render json: { errors: ["Successfully logged out"]}, status: :ok
   end
 end

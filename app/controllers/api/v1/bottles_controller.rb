@@ -1,7 +1,6 @@
 module Api
   module V1
     class BottlesController < ApplicationController
-      skip_before_action :authenticate_user
 
       def index
         @bottles = Bottle.all
@@ -20,6 +19,7 @@ module Api
       def destroy
         @bottle = Bottle.find(params[:id])
         @bottle.destroy
+        render json: { message: 'Deleted Successfully'}, status: :ok
       end
     end
   end

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
       resources :wineries, only: [:index, :show, :create]
       resources :bottles, only: [:index, :show, :create, :update, :destroy]
       post '/signup', to: 'users#create'
+      get '/me/:id', to: 'users#show'
     end
   end
-  get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout/:id', to: 'sessions#destroy'
 end

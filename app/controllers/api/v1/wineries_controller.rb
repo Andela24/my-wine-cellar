@@ -1,8 +1,6 @@
 module Api
   module V1
     class WineriesController < ApplicationController
-      skip_before_action :authenticate_user
-      before_action :set_winery, only: [:show, :update, :destroy]
       
       def index
         @wineries = Winery.all

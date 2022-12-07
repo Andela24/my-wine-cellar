@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      skip_before_action :authenticate_user
+      skip_before_action :authenticate_user, only: [:create]
 
       def index
         @users = User.all
@@ -9,14 +9,14 @@ module Api
       end
 
       def show
-        render json: { user: User.find(params[:id]) }
+        @user = User.find(params[:id])
+        render json: @user, status: :ok
       end
 
       def create
         @user = User.create!(user_params)
         if @user.valid?
-          
-          session[:user_id] = @user.id
+          @user.update(is_logedin: true)
           render json: @user, status: :created
         else
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
