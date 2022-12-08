@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:username])
-  
+    
     if user&.authenticate(params[:password])
-      user.update(is_logedin: true)
+      user.update_attribute(:is_logedin, true)
       render json: user, status: :created
     else
-      render json: { errors: ["Username or Password did not match."] }
+      render json: { errors: ["Username or Password did not match."] }, status: :unauthorized
     end
   end
 
