@@ -1,3 +1,3 @@
 class WinerySerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :bottles
 end
