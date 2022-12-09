@@ -7,7 +7,7 @@ class WineriesController < ApplicationController
   end
 
   def show
-    @winery = Winery.find_by(id: current_user.id)
+    @winery = Winery.find_by(id: params[:id])
     render json: @winery, status: :ok
   end
 
