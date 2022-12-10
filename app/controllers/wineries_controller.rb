@@ -2,7 +2,12 @@
 class WineriesController < ApplicationController
   
   def index
-    @wineries = Winery.where(user_id: current_user.id)
+    @wineries = Winery.all
+    render json: @wineries, status: :ok
+  end
+
+  def my_wineries
+    @wineries = @current_user.wineries
     render json: @wineries, status: :ok
   end
 
@@ -12,7 +17,11 @@ class WineriesController < ApplicationController
   end
 
   def create
-    @winery = Winery.create(name: params[:winery_name], user_id: @current_user.id)
-    render json: @winery, status: 201
+    @winery = Winery.new(name: params[:winery_name])
+    if @winery.save
+      render json: @winery, status: 201
+    else
+      render json: { message: "Failed to create winery" }, status: 422
+    end
   end
 end
