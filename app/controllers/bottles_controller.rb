@@ -8,7 +8,11 @@ class BottlesController < ApplicationController
 
   def create
     @bottle = Bottle.create(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage], user_id: @current_user.id, winery_id: params[:winery_id])
-    render json: @bottle, status: :created
+    if @bottle.save
+      render json: @bottle, status: :created
+    else
+      render json: {message: 'Cannot create bottle' }, status: 422
+    end
   end
 
   def show
