@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     
     if user&.authenticate(params[:password])
       user.update_attribute(:is_logedin, true)
+      session[:user_id] = user.id
       render json: user, status: :created
     else
       render json: { errors: ["Username or Password did not match."] }, status: :unauthorized
