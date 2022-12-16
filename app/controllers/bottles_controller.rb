@@ -1,5 +1,6 @@
-
 class BottlesController < ApplicationController
+  # before_action only: [:show, :update, :destroy]
+  # skip_before_action :authenticate_user
 
   def index
     @bottles = Bottle.where(user_id: @current_user.id)
