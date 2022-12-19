@@ -1,6 +1,6 @@
-
 class WineriesController < ApplicationController
   
+   # get / wineries
   def index
     @wineries = Winery.all
     render json: @wineries, status: :ok
@@ -11,11 +11,13 @@ class WineriesController < ApplicationController
     render json: @wineries, status: :ok
   end
 
+  # GET/wineries:id
   def show
     @winery = Winery.find_by(id: params[:id])
     render json: @winery, status: :ok
   end
-
+  
+ #POST
   def create
     @winery = Winery.new(name: params[:winery_name])
     if @winery.save

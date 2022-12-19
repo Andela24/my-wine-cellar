@@ -1,7 +1,6 @@
 class BottlesController < ApplicationController
-  # before_action only: [:show, :update, :destroy]
-  # skip_before_action :authenticate_user
 
+  # get/ bottles
   def index
     @bottles = Bottle.where(user_id: @current_user.id)
     render json: @bottles, status: :ok
@@ -16,16 +15,19 @@ class BottlesController < ApplicationController
     end
   end
 
+  # GET/bottles:id
   def show
     @bottle = Bottle.find_by(id: params[:id])
     render json: @bottle, status: :ok
   end
 
+   #PATCH/PUT/bottles/1
   def update
     @bottle = Bottle.find(params[:id])
     @bottle.update(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage]) if @bottle.present?
   end
 
+   #DELETE/bottles/1
   def destroy
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
