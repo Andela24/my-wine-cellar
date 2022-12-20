@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
    #GET/ me
   def show
+    # binding.pry
     @user = @current_user
     render json: @user, status: :ok
   end

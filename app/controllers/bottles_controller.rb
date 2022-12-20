@@ -27,7 +27,7 @@ class BottlesController < ApplicationController
     @bottle.update(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage]) if @bottle.present?
   end
 
-   #DELETE/bottles/1
+  
   def destroy
     @bottle = Bottle.find(params[:id])
     @bottle.destroy
