@@ -37,14 +37,18 @@ module MyWineCellar
     config.api_only = true
 
      # Adding back cookies and session middleware
+    #  config.middleware.use ActionDispatch::Cookies
+    #  config.middleware.use ActionDispatch::Session::CookieStore
+
+     config.session_store :cookie_store, key: "_authentication_app"
      config.middleware.use ActionDispatch::Cookies
-     config.middleware.use ActionDispatch::Session::CookieStore
+     config.middleware.use config.session_store, config.session_options
  
      # Use SameSite=Strict for all cookies to help protect against CSRF
      config.action_dispatch.cookies_same_site_protection = :strict
      config.middleware.insert_before 0, Rack::Cors do
       allow do
-         origins '*'
+         origins 'http://localhost:3001'
          resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete]
        end
     end

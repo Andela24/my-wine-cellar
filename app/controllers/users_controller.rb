@@ -9,20 +9,15 @@ class UsersController < ApplicationController
 
    #GET/ me
   def show
-    # binding.pry
-    # @user = User.find(id: session[:user_id])
     @user = @current_user
     render json: @user, status: :ok
-   
   end
 
   # signup - create account and log in user /POST
   def create
     @user = User.create!(user_params) #user submits the signup form- it's a post request to our users end point 
     if @user.valid?
-      # logs in user
       session[:user_id] = @user.id # login/remembering who our user is through entire app
-      @user.update_attribute(:is_logedin, true)
       render json: @user, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
