@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
     # authenticate is a new method given to us by Bcrypt. It checks the password passed in if it's the correct password
     
       if user&.authenticate(params[:password])
+        #authenticate will use the same hash and salt
+        #to the password that was entered and compare it
+        # to what the users stored password is
         session[:user_id] = user.id
         render json: user, status: :created
     
