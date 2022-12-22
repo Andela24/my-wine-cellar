@@ -5,38 +5,36 @@
 Welcome to your online Wine Cellar. This CRUD application allows a user to keep track of their wine collection. 
 This app allows for the consumer to not only keep track of what wines they have, but also provide them with the source of which winery came from. This app allows for the consumer to keep track of the vintage, type of wine, and the source for the winery.
 
-## 🚀 Features
-The user can:
+## System Dependencies
 
-Signup, Login, and Logout. Each user's data is password protected using bcrypt.
+* gem 'rack-cors'
+* gem 'pry'
+* gem 'active_model_serializers', '~> 0.10.2'
+* gem "bcrypt", "~> 0.1.7"
+* gem "puma", "~> 5.0"
+* gem 'dotenv-rails'
 
-* See all available Wineries in the cellar
-* Show the bottles from chosen winery
-* See your bottle collection
-* See your personal wineries
-* Create New Winery 
-* Create New bottle
-* Update bottle
-* Submit new bottle
-* Delete the bottle
+## Supporting Tech 
+
+* Ruby "2.7.4"
+* sqlite3 "~> 1.4"
+* React "^18.2.0"
+* React-bootstrap "^2.6.0"
+* React-router-dom "^6.4.4"
+* Semantic-ui-react "^2.1.4"
 
 # Installation
-## Backend
-Navigate to the main directory. Before you begin, you will want to populate the database with some fake data of things to rate. To do that, enter in your terminal:
+Check above for the supporting tech. Make sure you have those versions installed on your local machine.
 
-* rails db:migrate 
+* git@github.com:Andela24/my-wine-cellar.git
+* cd my-wine-cellar 
 * bundle install
+* npm install --prefix client
 
 to install the required gems
 
-* rails s
-will run the server on port http://localhost:3000
-
-## Frontend:
-Navigate to the client folder and enter:
-* npm start
-
- This will launch react server and serve the app on http://localhost:4000
+By default, the server will run on port http://localhost:3001 (the frontend will run on port 3000)
+Follow directions for installation of frontend [https://github.com/Andela24/my-wine-cellar-ui]
 
 ## Technologies
 
@@ -45,3 +43,10 @@ This system uses Ruby on Rails with a postgres server for the backend as well as
 ## Demo Video
 If you would like to see this project in action, check out this demo video:
 https://youtu.be/TTbTg1AlB3k
+
+## Licensing (MIT, optional)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

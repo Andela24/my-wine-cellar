@@ -1,4 +1,5 @@
 class WineriesController < ApplicationController
+  ## checking if the user is logged in
   
    # get / wineries
   def index
