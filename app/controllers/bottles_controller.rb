@@ -15,6 +15,11 @@ class BottlesController < ApplicationController
     end
   end
 
+  # GET/bottles:id
+  def show
+    bottle = Bottle.find_by(id: params[:id])
+    render json: bottle, status: :ok
+  end
 
    #PATCH/PUT/bottles/1
   def update
@@ -24,19 +29,9 @@ class BottlesController < ApplicationController
 
   
   def destroy
-    
     @bottle = @current_user.bottles.find(params[:id])
-    # render errors
-    #not authorized if not logged in
     @bottle.destroy
     render json: { message: 'Deleted Successfully'}, status: :ok
   end
-
-  # private
-  # # Only allow a list of trusted parameters through.
-  # def bottles_params
-  #   params.permit
-  # end
-
 end
 

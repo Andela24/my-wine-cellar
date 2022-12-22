@@ -26,14 +26,19 @@ This app allows for the consumer to not only keep track of what wines they have,
 # Installation
 Check above for the supporting tech. Make sure you have those versions installed on your local machine.
 
-* git@github.com:Andela24/my-wine-cellar.git
+* Clone this repo: 
+    git@github.com:Andela24/my-wine-cellar.git
 * cd my-wine-cellar 
 * bundle install
-* npm install --prefix client
+* rails db:create
+* rails db:migrate 
+* rails db:seed
+* rails server or rails s
 
 to install the required gems
 
 By default, the server will run on port http://localhost:3001 (the frontend will run on port 3000)
+
 Follow directions for installation of frontend [https://github.com/Andela24/my-wine-cellar-ui]
 
 ## Technologies
