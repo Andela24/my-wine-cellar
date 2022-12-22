@@ -27,7 +27,6 @@ This app allows for the consumer to not only keep track of what wines they have,
 Check above for the supporting tech. Make sure you have those versions installed on your local machine.
 
 * Clone this repo: 
-   [git@github.com:Andela24/my-wine-cellar.git]
 * cd my-wine-cellar 
 * bundle install
 * rails db:create
