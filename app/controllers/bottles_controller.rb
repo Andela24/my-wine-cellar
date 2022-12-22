@@ -1,5 +1,6 @@
 class BottlesController < ApplicationController
-
+  # before_action :authorize_user, only: [:update, :destroy]
+  
   # get/ bottles
   def index
     @bottles = Bottle.where(user_id: @current_user.id)
@@ -30,8 +31,17 @@ class BottlesController < ApplicationController
   
   def destroy
     @bottle = @current_user.bottles.find(params[:id])
+    #run errors
     @bottle.destroy
     render json: { message: 'Deleted Successfully'}, status: :ok
   end
 end
+
+  # private 
+
+  # def authorize_user
+  #   permitted = current_user.id == @bottle.user_id
+  #   render json: {errors:{User: "Failed to edit or destroy bottle"}}, status: :forbidden unless permitted
+  # end
+# end
 
