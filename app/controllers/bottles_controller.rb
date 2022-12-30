@@ -24,8 +24,8 @@ class BottlesController < ApplicationController
 
    #PATCH/PUT/bottles/1
   def update
-    @bottle = Bottle.find(params[:id])
-    @bottle.update(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage]) if @bottle.present?
+    @bottle = @current_user.bottles.find(params[:id])
+    @bottle.update(bottle_params) if @bottle.present?
   end
 
   
@@ -39,9 +39,8 @@ end
 
   # private 
 
-  # def authorize_user
-  #   permitted = current_user.id == @bottle.user_id
-  #   render json: {errors:{User: "Failed to edit or destroy bottle"}}, status: :forbidden unless permitted
-  # end
+def bottle_params
+params.permit(:title, :wine_type, :grape_variety, :vintage, :user_id, :winery_id)
+end
 # end
 
