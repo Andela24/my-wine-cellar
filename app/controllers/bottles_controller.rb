@@ -24,36 +24,33 @@ class BottlesController < ApplicationController
 
    #PATCH/PUT/bottles/1
   def update
-<<<<<<< HEAD
-    @bottle = @current_user.bottles.find(params[:id])
-    @bottle.update(bottle_params) if @bottle.present?
-=======
-    @bottle = Bottle.find(params[:id])
+    @bottle = @current_user.bottles.find(params[id])
     if @bottle.user_id == @current_user.id
-      @bottle.update(title: params[:title], wine_type: params[:wineType], grape_variety: params[:grapeVariety], vintage: params[:vintage]) if @bottle.present?
-      render json: {message: 'Updated successfully', error: false}, status: :ok
-    else
+    @bottle.update(bottle_params) if @bottle.present?
+    render json: {message:'Updated succesfully', error: false}, status: :ok
+    else 
       render json: {error: true}, status: :unauthorized
     end
->>>>>>> e3348934f934944112899af94f5c6935e7e93431
   end
+end
 
   
   def destroy
-    @bottle = Bottle.find(params[:id])
+    @bottle = @current_user.bottles.find(params[:id])
     if @bottle.user_id == @current_user.id
-      @bottle.destroy
-      render json: {message: 'Deleted Successfully', error: false}, status: :ok
+    @bottle.destroy
+    render json: { message: 'Deleted Successfully', error: false}, status: :ok
     else
       render json: {error: true}, status: :unauthorized
     end
   end
 end
 
-  # private 
-
-def bottle_params
-params.permit(:title, :wine_type, :grape_variety, :vintage, :user_id, :winery_id)
+  private 
+  
+  def bottle_params
+    params.permit(:title, :wine_type, :grape_variety, :vintage, :user_id, :winery_id)
 end
-# end
+
+end
 
