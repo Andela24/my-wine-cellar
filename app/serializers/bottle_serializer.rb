@@ -3,4 +3,8 @@ class BottleSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :winery
+
+  def winery
+    object.winery
+  end
 end

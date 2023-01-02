@@ -12,6 +12,8 @@ gem "sqlite3", "~> 1.4"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem "pry"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -46,5 +48,6 @@ group :development do
   # gem "spring"
 end
 
-
+gem 'bcrypt-ruby'
 gem "active_model_serializers", "~> 0.10.13"
+gem 'rack-cors'
