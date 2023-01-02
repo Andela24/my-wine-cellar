@@ -1,5 +1,4 @@
 class BottlesController < ApplicationController
-  # before_action :authorize_user, only: [:update, :destroy]
   
   # get/ bottles
   def index
@@ -32,7 +31,7 @@ class BottlesController < ApplicationController
       render json: {error: true}, status: :unauthorized
     end
   end
-end
+
 
   
   def destroy
@@ -44,13 +43,14 @@ end
       render json: {error: true}, status: :unauthorized
     end
   end
-end
 
-  private 
+
+private 
   
   def bottle_params
     params.permit(:title, :wine_type, :grape_variety, :vintage, :user_id, :winery_id)
-end
+  end
 
 end
+
 
