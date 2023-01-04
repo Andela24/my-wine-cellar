@@ -1,4 +1,5 @@
 class BottlesController < ApplicationController
+  # before_action :authorize_user, only: [:update, :destroy]
   
   # get/ bottles
   def index
@@ -22,8 +23,8 @@ class BottlesController < ApplicationController
   end
 
    #PATCH/PUT/bottles/1
-  def update
-    @bottle = @current_user.bottles.find(params[id])
+   def update
+    @bottle = @current_user.bottles.find(params[:id])
     if @bottle.user_id == @current_user.id
     @bottle.update(bottle_params) if @bottle.present?
     render json: {message:'Updated succesfully', error: false}, status: :ok
@@ -31,7 +32,6 @@ class BottlesController < ApplicationController
       render json: {error: true}, status: :unauthorized
     end
   end
-
 
   
   def destroy
@@ -44,13 +44,11 @@ class BottlesController < ApplicationController
     end
   end
 
-
-private 
+  private 
   
   def bottle_params
     params.permit(:title, :wine_type, :grape_variety, :vintage, :user_id, :winery_id)
-  end
-
 end
 
+end
 
